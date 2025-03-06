@@ -1,5 +1,5 @@
 import random
-
+0
 class Robot:
 
     def __init__(self, Name: str, HP: int, ATK: int):
@@ -37,10 +37,29 @@ if __name__ == "__main__":
         robot1.status()
         robot2.status()
 
-        # Simulate a turn for each robot
-        robot1.attack(robot2)
+        action = {
+            "1":"attack",
+            "2":"defend"
+            }
+
+        print("\nGiliran robot 1:")
+        action = input("Apa yang ingin dilakukan? (attack:1/defend:2): ")
+        if action.lower() == "1":
+            robot1.attack(robot2)
+        elif action.lower() == "2":
+            print("Robot 1 bertahan.")
+        else:
+            print("Aksi tidak valid.")
+
         if robot2.HP > 0:
-            robot2.attack(robot1)
+            print("\nGiliran robot 2:")
+            action = input("Apa yang ingin dilakukan? (attack:1/defend:2): ")
+            if action.lower() == "1":
+                robot2.attack(robot1)
+            elif action.lower() == "2":
+                print("Robot 2 bertahan.")
+            else:
+                print("Aksi tidak valid.")
 
     # Print the game result
     if robot1.HP > 0:
